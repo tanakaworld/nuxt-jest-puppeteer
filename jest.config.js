@@ -1,4 +1,5 @@
 module.exports = {
+  preset: 'jest-puppeteer',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
@@ -13,5 +14,6 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue'
-  ]
+  ],
+  setupFilesAfterEnv: ['<rootDir>/test/setup/jest-setup.js']
 }
