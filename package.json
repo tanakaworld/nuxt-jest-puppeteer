@@ -39,6 +39,8 @@
     "jest-dev-server": "^4.1.1",
     "jest-image-snapshot": "^2.8.1",
     "jest-puppeteer": "^4.1.1",
+    "jsdom": "^15.0.0",
+    "jsdom-global": "^3.0.2",
     "nodemon": "^1.19.0",
     "prettier": "^1.17.0",
     "puppeteer": "^1.15.0",
