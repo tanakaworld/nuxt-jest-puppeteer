@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer')
+const fs = require('fs')
 const appRoot = require('app-root-path')
 const { ensureDir } = require('fs-extra')
 
@@ -16,11 +17,12 @@ describe('test', () => {
     const fileName = 'test'
 
     await page.goto('http://localhost:3000')
+
+    // take snapshot
     const image = await page.screenshot({
       fullPage: true,
-      path: `${ssDir}/${fileName}.png`
+      path: `${ssDir}/${fileName}-expected.png`
     })
-
     expect(image).toMatchImageSnapshot({
       customDiffDir: ssDir,
       customSnapshotsDir: ssDir,
