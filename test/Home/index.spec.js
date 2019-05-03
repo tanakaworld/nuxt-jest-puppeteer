@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer')
 const appRoot = require('app-root-path')
 const { ensureDir } = require('fs-extra')
 
-const ssPath = `/${appRoot}/test-results/screenshots`
+const ssDir = `/${appRoot}/test-results/screenshots`
 
 // devices
 const iPhone = puppeteer.devices['iPhone SE']
@@ -12,14 +12,19 @@ describe('test', () => {
     // devise
     await page.emulate(iPhone)
 
-    await ensureDir(ssPath)
+    await ensureDir(ssDir)
+    const fileName = 'test'
 
     await page.goto('http://localhost:3000')
     const image = await page.screenshot({
       fullPage: true,
-      path: `${ssPath}/test.png`
+      path: `${ssDir}/${fileName}.png`
     })
 
-    expect(image).toMatchImageSnapshot()
+    expect(image).toMatchImageSnapshot({
+      customDiffDir: ssDir,
+      customSnapshotsDir: ssDir,
+      customSnapshotIdentifier: fileName
+    })
   })
 })
