@@ -38,6 +38,11 @@ jobs:
       - run:
           name: Install npm dependencies
           command: npm ci
+      - run: mkdir -p /nuxt-jest-puppeteer/test-results
       - run:
           name: run test
           command: npm test
+      - store_test_results:
+          path: /nuxt-jest-puppeteer/test-results
+      - store_artifacts:
+          path: /nuxt-jest-puppeteer/test-results
