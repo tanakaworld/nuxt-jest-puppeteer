@@ -15,5 +15,7 @@ module.exports = {
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue'
   ],
+  globalSetup: '<rootDir>/test/setup/global-setup.js',
+  globalTeardown: '<rootDir>/test/setup/global-teardown.js',
   setupFilesAfterEnv: ['<rootDir>/test/setup/jest-setup.js']
 }
