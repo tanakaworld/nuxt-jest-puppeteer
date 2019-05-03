@@ -1,5 +1,7 @@
 # nuxt-jest-puppeteer
 
+[![CircleCI](https://circleci.com/gh/tanakaworld/nuxt-jest-puppeteer.svg?style=svg)](https://circleci.com/gh/tanakaworld/nuxt-jest-puppeteer)
+
 > Verification for using jest + puppeteer with Nuxt.js
 
 ## Build Setup
@@ -17,6 +19,9 @@ $ npm start
 
 # generate static project
 $ npm run generate
+
+# test
+$ npm test
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
