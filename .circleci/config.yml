@@ -9,6 +9,9 @@ executors:
         description: a image for docker container
     docker:
       - image: <<parameters.image>>
+    environment:
+      CHROME_BIN: /usr/bin/chromium-browser
+      PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
     working_directory: /nuxt-jest-puppeteer
 
 commands:
@@ -20,14 +23,10 @@ commands:
           name: Install dependencies
           command: |
             apk update && apk upgrade && \
-            echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
-            echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
             apk add --no-cache \
-              chromium@edge \
-              nss@edge \
-              freetype@edge \
-              harfbuzz@edge \
-              ttf-freefont@edge
+                    udev \
+                    ttf-freefont \
+                    chromium
 
 jobs:
   build:

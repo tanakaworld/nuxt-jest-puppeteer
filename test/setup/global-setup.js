@@ -4,7 +4,16 @@ const puppeteer = require('puppeteer')
 // overwrite default setup
 // https://github.com/smooth-code/jest-puppeteer/blob/db731a3a4382f3e27c4e16d9f8cf2560ee5adaff/packages/jest-environment-puppeteer/src/global.js
 module.exports = async function globalSetup() {
-  global.browser = await puppeteer.launch()
+  global.browser = await puppeteer.launch({
+    headless: true,
+    executablePath: process.env.CHROME_BIN || null,
+    args: [
+      '--no-sandbox',
+      '--headless',
+      '--disable-gpu',
+      '--disable-dev-shm-usage'
+    ]
+  })
   process.env.PUPPETEER_WS_ENDPOINT = global.browser.wsEndpoint()
 
   await setupDevServer({
